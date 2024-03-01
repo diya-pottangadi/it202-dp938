@@ -11,10 +11,9 @@ function processArray($arr) {
     //TODO add logic here to echo out only odd values
     foreach($arr as $a){
         if($a%2==1){
-            echo $a; 
+            echo $a ."\n";
         }
     }
-
     //UCID: dp938
     //Date: 3/1/24
 }

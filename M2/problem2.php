@@ -13,8 +13,7 @@ function getTotal($arr) {
     foreach($arr as $a){
         $total +=$a;
     }
-
-    echo(round($total, 2));
+    $total = round($total,2);
 
     echo "The total is " . var_export($total, true);
 

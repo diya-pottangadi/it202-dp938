@@ -13,7 +13,7 @@ function bePositive($arr) {
     
     foreach($arr as $a) {
         $positive = abs($a);
-        echo "$positive";
+        //echo "$positive";
         var_dump($positive);
     }
     //UCID: dp938
@@ -55,4 +55,4 @@ echo "Problem 3: Be Positive<br>";
         border-left: solid 1px black;
     }
 </style>
-Comment
+
