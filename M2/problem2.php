@@ -4,12 +4,21 @@ $a2 = [1.99, 1.99, 0.99, 1.99, 0.99, 1.99, 0.99, 0.99];
 $a3 = [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01];
 $a4 = [10.01, -12.22, 0.23, 19.20, -5.13, 3.12];
 function getTotal($arr) {
+
     echo "<br>Processing Array:<br><pre>" . var_export($arr, true) . "</pre>";
     $total = 0.00;
     //note: use the $arr variable, don't directly touch $a1-$a4
     //TODO do adding here
     //TODO do rounding stuff here (round to two decimals i.e., 0.10, 0.01, 0.00)
+    foreach($arr as $a){
+        $total +=$a;
+    }
+    $total = round($total,2);
+
     echo "The total is " . var_export($total, true);
+
+    //UCID: dp938
+    //Date: 3/1/24
 }
 echo "Problem 2: Adding Floats<br>";
 ?>
