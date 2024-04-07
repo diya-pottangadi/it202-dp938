@@ -50,7 +50,7 @@ if (isset($_POST["save"])) {
         }
     } catch (Exception $e) {
         flash("An unexpected error occurred, please try again", "danger");
-        echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+        //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
     }
 
 
@@ -80,7 +80,7 @@ if (isset($_POST["save"])) {
                     }
                 }
             } catch (Exception $e) {
-                //echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+                echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
             }
         } else {
             flash("New passwords don't match", "warning");
@@ -150,5 +150,5 @@ $username = get_username();
     }
 </script>
 <?php
-require_once(__DIR__ . "/partials/flash.php");
+require_once(__DIR__ . "/../../partials/flash.php");
 ?>
