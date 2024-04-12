@@ -1,4 +1,3 @@
--- Active: 1707348152975@@db.ethereallab.app@3306@dp938
 CREATE TABLE IF NOT EXISTS `Users` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(100) NOT NULL,
