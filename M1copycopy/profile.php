@@ -3,7 +3,6 @@
     html{
         background-image: url("https://marketplace.canva.com/EAFPnhwhzx4/1/0/900w/canva-yellow-daisy-cute-flower-iphone-wallpaper-XUyIHx9eH2Q.jpg");
     }
-
     /* form styling */
     form {
         max-width: 500px;
@@ -13,14 +12,11 @@
         border-radius: 15px;
         box-sizing: border-box;
         border-radius: 10px;
-
     }
-
     label {
         display: inline-block;
         margin-bottom: 4px;
     }
-    
     /* text boxes */
     input[type="text"],
     input[type="email"],
@@ -30,22 +26,21 @@
         margin: 8px 0;
         box-sizing: border-box;
     }
-
     input[type="submit"] {
         background-color: #8A9A5B;
         color: white;
         padding: 10px 20px;
         border-radius: 0px;
     }
-
     input[type="submit"]:hover {
         background-color: green;
     }
 </style>
 
 <?php
-session_start();
+//session_start();
 require(__DIR__ . "/partials/nav.php");
+//require_once(__DIR__ . "/flash_messages.php"); // Include flash_messages.php to access flash() function
 
 echo '<h2>Profile Page</h2>';
 echo '<img src="https://i.pinimg.com/474x/74/fc/99/74fc99a07a4aae549b90a5f46ac3de0b.jpg" alt="Profile Picture" style="max-width: 20%; height: 20%;">';

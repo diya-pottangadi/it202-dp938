@@ -11,10 +11,10 @@ require(__DIR__ . "/partials/nav.php");
     .box {
     background-color: white;
     padding: 10px; /* Adjust as needed */
-    border: 1px whitesmoke; /* Add border for the box */
+    border: whitesmoke; /* Add border for the box */
     border-radius: 5px; /* Optional: Add rounded corners */
-    width: 500px; /* Fixed width */
-    }
+    width: 500; /* Fixed width */
+}
 </style>
 
 <h1>Home</h1>
@@ -25,9 +25,9 @@ if (is_logged_in()) {
     echo "<span class='not-logged-in'>You're not logged in</span>";
 }
 //shows session info
-//echo '<div class="box">';
+echo '<div class="box">';
 echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 echo '</div>';
 
-//echo "<pre>" . var_export($_SESSION, true) . "</pre>";
+echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 ?>
