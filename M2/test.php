@@ -4,6 +4,23 @@ require(__DIR__. "/partials/nav.php");
 
 <h2>Cars</h2>
 
+<form>
+    <div>
+        <label for="make">Make</label>
+        <input type="text" name="make" required />
+    </div>
+    <div>
+        <label for="model">Model</label>
+        <input type="text" name="model" required />
+    </div>
+    <div>
+        <label for="year">Year</label>
+        <input type="text" name="year" required />
+    </div>
+    <input type="submit" value = "Add Car"/>
+
+</form>
+
 <table>
 <tr>
     <th>Make</th>
@@ -27,12 +44,30 @@ require(__DIR__. "/partials/nav.php");
             echo '<td>' . $car['make'] . '</td>';
             //echo "\n";
             echo '<td>' . $car['model'] .' </td>';
-            echo '</tr>';
-            //echo "<br>";
+            echo '<td>'. $car['year'] . '</td>';
+            echo "<br>";
         }
     }
  } catch (Exception $e){
     echo var_dump($e);
  }
-?>
+
+ if(isset($_GET['make']) && isset($_GET['model']) && isset($_GET['year'])){
+    $make = $_GET['make'];
+    $model = $_GET['model'];
+    $year = $_GET['year'];
+
+ $db = getDB();
+ $stmt = $db->prepare("INSERT INTO Cars (make, model, year) values(:make,:model,:year) ");
+ try {
+     $stmt->execute([ ":make" => $make, ":model" => $model, ":year" => $year ]);
+     echo "Successfully registered!";
+ } catch (Exception $e) {
+     echo "There was a problem registering";
+     echo "<pre>" . var_export($e, true) . "</pre>";
+ }
+
+}
+ 
+ ?>
 </table>

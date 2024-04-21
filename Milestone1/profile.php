@@ -3,7 +3,6 @@
     html{
         background-image: url("https://marketplace.canva.com/EAFPnhwhzx4/1/0/900w/canva-yellow-daisy-cute-flower-iphone-wallpaper-XUyIHx9eH2Q.jpg");
     }
-
     /* form styling */
     form {
         max-width: 500px;
@@ -13,14 +12,11 @@
         border-radius: 15px;
         box-sizing: border-box;
         border-radius: 10px;
-
     }
-
     label {
         display: inline-block;
         margin-bottom: 4px;
     }
-    
     /* text boxes */
     input[type="text"],
     input[type="email"],
@@ -30,22 +26,21 @@
         margin: 8px 0;
         box-sizing: border-box;
     }
-
     input[type="submit"] {
         background-color: #8A9A5B;
         color: white;
         padding: 10px 20px;
         border-radius: 0px;
     }
-
     input[type="submit"]:hover {
         background-color: green;
     }
 </style>
 
 <?php
-session_start();
+//session_start();
 require(__DIR__ . "/partials/nav.php");
+//require_once(__DIR__ . "/flash_messages.php"); // Include flash_messages.php to access flash() function
 
 echo '<h2>Profile Page</h2>';
 echo '<img src="https://i.pinimg.com/474x/74/fc/99/74fc99a07a4aae549b90a5f46ac3de0b.jpg" alt="Profile Picture" style="max-width: 20%; height: 20%;">';
@@ -66,7 +61,7 @@ if (isset($_POST["save"])) {
     $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
     try {
         $stmt->execute($params);
-        flash("Profile saved", "success");
+        flash("Profile successfully saved!", "success");
     } catch (Exception $e) {
         if ($e->errorInfo[1] === 1062) {
             //https://www.php.net/manual/en/function.preg-match.php
@@ -102,6 +97,9 @@ if (isset($_POST["save"])) {
 
     //check/update password
     $current_password = se($_POST, "currentPassword", null, false);
+    //this is added code 
+    //echo "Current Password from form: $current_password<br>"; // Debugging
+
     $new_password = se($_POST, "newPassword", null, false);
     $confirm_password = se($_POST, "confirmPassword", null, false);
     if (!empty($current_password) && !empty($new_password) && !empty($confirm_password)) {
@@ -120,16 +118,16 @@ if (isset($_POST["save"])) {
                             ":password" => password_hash($new_password, PASSWORD_BCRYPT)
                         ]);
 
-                        flash("Password reset", "success");
+                        flash("Password successfully reset", "success");
                     } else {
-                        flash("Current password is invalid", "warning");
+                        flash("Current password is invalid. Please enter the correct password.", "warning");
                     }
                 }
             } catch (Exception $e) {
                 echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
             }
         } else {
-            flash("New passwords don't match", "warning");
+            flash("New passwords don't match. Please try again.", "warning");
         }
     }
 }
@@ -149,9 +147,7 @@ $username = get_username();
         <input type="text" name="username" id="username" value="<?php se($username); ?>" />
     </div>
     <!-- DO NOT PRELOAD PASSWORD -->
-   
-    <div style="center; font:serif; font-size: 20px; font-weight: bold; color: black; margin-bottom: 10px;">Password Reset:</div>
-
+    <div>Password Reset</div>
     <div class="mb-3">
         <label for="cp">Current Password</label>
         <input type="password" name="currentPassword" id="cp" />
