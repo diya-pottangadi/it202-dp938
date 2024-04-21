@@ -76,11 +76,11 @@ require(__DIR__ . "/partials/nav.php");
 </script>
 <?php
 //TODO 2: add PHP Code
-
 if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"])) {
     //echo$_POST["password"];
     $email = se($_POST, "email", "", false);
     $username = se($_POST, "username", "", false);
+
     $password = se($_POST, "password", "", false);
     $confirm = se(
         $_POST,
@@ -119,9 +119,8 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         echo "Passwords must match";
         $hasError = true;
     }
-       if (!$hasError) {
+    if (!$hasError) {
         echo "Welcome, $email";
-        echo "<br>";
         //TODO 4
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = getDB();
@@ -130,8 +129,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
             $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
             echo "Successfully registered!";
         } catch (Exception $e) {
-            echo "The chosen username or email is already taken. Please try again.";
-
+            echo "There was a problem registering";
             "<pre>" . var_export($e, true) . "</pre>";
         }
     }
