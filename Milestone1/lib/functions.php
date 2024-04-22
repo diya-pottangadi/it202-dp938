@@ -14,5 +14,5 @@ require(__DIR__ . "/sanitizers.php");
 require(__DIR__ . "/user_helpers.php");
 //TODO 4: Flash Message Helpers
 require(__DIR__. "/flash_messages.php");  
-require(__DIR__. "/get_url.php");
+//require(__DIR__. "/get_url.php");
 ?>
