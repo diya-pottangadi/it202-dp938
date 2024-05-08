@@ -116,7 +116,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     if (password_verify($password, $hash)) {
                         echo "Weclome $email";
                         $_SESSION["user"] = $user;
-
+                        $_SESSION["user_id"] = $user_id;
                         try {
                             //lookup potential roles
                             $stmt = $db->prepare("SELECT Roles.name FROM Roles 

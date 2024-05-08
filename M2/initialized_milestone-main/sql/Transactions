@@ -1,0 +1,11 @@
+CREATE TABLE Transactions (
+    Id SERIAL PRIMARY KEY,
+    account_src INT,
+    account_dest INT,
+    balance_change DECIMAL,
+    transaction_type VARCHAR(50),
+    memo VARCHAR(255),
+    expected_total DECIMAL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
