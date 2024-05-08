@@ -2,6 +2,15 @@
 require(__DIR__. "/partials/nav.php");
 ?>
 
+
+<?php if(isset($_GET['carid'])): ?>
+    <h1>
+        <?php 
+            echo $_GET['carid'];
+        ?>
+    </h1>
+<?php else: ?>
+
 <h2>Cars</h2>
 
 <form>
@@ -30,7 +39,7 @@ require(__DIR__. "/partials/nav.php");
 
 <?php
  $db = getDB();
- $stmt = $db->prepare("SELECT make, model, year from Cars");
+ $stmt = $db->prepare("SELECT id, make, model, year from Cars");
 
  try{
     $r = $stmt->execute();
@@ -40,12 +49,13 @@ require(__DIR__. "/partials/nav.php");
         //echo var_export($cars);
         foreach($cars as $car){
             echo '<tr>';
+            echo '<td><a href = "test.php?carid='.$car['id']. '">' . $car['make'] . '</a> </td>';
             //echo var_export($car);
-            echo '<td>' . $car['make'] . '</td>';
-            //echo "\n";
+            //echo '<td>' . $car['make'] . '</td>';
             echo '<td>' . $car['model'] .' </td>';
+            
             echo '<td>'. $car['year'] . '</td>';
-            echo "<br>";
+            echo "</tr></a>";
         }
     }
  } catch (Exception $e){
@@ -71,3 +81,4 @@ require(__DIR__. "/partials/nav.php");
  
  ?>
 </table>
+<?php endif; ?>

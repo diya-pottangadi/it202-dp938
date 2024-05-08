@@ -1,0 +1,15 @@
+INSERT IGNORE INTO Users (id, username, password) VALUES (-1, 'system_user', 'password123');
+
+IF NOT EXISTS (SELECT 1 FROM Users WHERE id = -1) BEGIN
+    -- Create the system user
+    INSERT INTO Users (id, username, password) VALUES (-1, 'system_user', 'password123');
+END;
+CREATE TABLE Accounts (
+    id SERIAL PRIMARY KEY,
+    account_number CHAR(12) UNIQUE,
+    user_id INT,
+    balance DECIMAL DEFAULT 0,
+    account_type VARCHAR(50),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
